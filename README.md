@@ -19,6 +19,12 @@ async def hello(ctx):
 async def heh(ctx, count_heh = 5):
     await ctx.send("he" * count_heh)
 
+@bot.event
+async def on_member_join(member):
+    # Karşılama mesajı gönderme
+    for channel in member.guild.text_channels:
+        await channel.send(f’ Hoş geldiniz: , {member.mention}!')
+
 @bot.command()
 async def check(ctx):
     if ctx.message.attachments:
